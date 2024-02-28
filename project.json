@@ -4,6 +4,7 @@
   "description": "Process to extract data from Rive Gauche site",
   "main": "Main.xaml",
   "dependencies": {
+    "UiPath.Database.Activities": "[1.7.1]",
     "UiPath.Excel.Activities": "[2.23.2-preview]",
     "UiPath.System.Activities": "[24.2.0-preview]",
     "UiPath.Testing.Activities": "[24.2.0-preview]",
