@@ -2,13 +2,12 @@
   <x:Members>
     <x:Property Name="row_transactionItem" Type="InArgument(sd:DataRow)" />
     <x:Property Name="in_config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="row_productData" Type="OutArgument(sd:DataRow)" />
     <x:Property Name="dt_products" Type="InOutArgument(sd:DataTable)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1320.8,3983.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>919.2,3880.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ExtractProductData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -115,14 +114,16 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ExtractProductData" sap:VirtualizedContainerService.HintSize="1331.2,3918.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ExtractProductData" sap:VirtualizedContainerService.HintSize="929.6,3816" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataRow" Name="row_productData" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BuildDataTable DataTable="[dt_products]" DisplayName="Build dt_products" sap:VirtualizedContainerService.HintSize="1268.8,100" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;id&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Url&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;BrandName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Name&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;DiscountPrice&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;FullPrice&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;IsInStock&quot; msdata:Caption=&quot;&quot; type=&quot;xs:boolean&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Address&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Subtitle&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Capacity&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-    <Assign sap2010:Annotation.AnnotationText="Assign template for product data to row_productData" DisplayName="Assign row_productData" sap:VirtualizedContainerService.HintSize="1268.8,152.8" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap2010:Annotation.AnnotationText="Assign template for product data to row_productData" DisplayName="Assign row_productData" sap:VirtualizedContainerService.HintSize="867.2,152" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="sd:DataRow">[row_productData]</OutArgument>
       </Assign.To>
@@ -135,23 +136,15 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Chrome Rive Gauche" sap:VirtualizedContainerService.HintSize="1268.8,3576.8" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="df1dc74ef6cbf8ed7e47b76b5cd77b56" Selector="&lt;html app='chrome.exe' title='*– купить по цене*' url='https://rivegauche.ru/product/*' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Product Page" sap:VirtualizedContainerService.HintSize="867.2,3575.2" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="df1dc74ef6cbf8ed7e47b76b5cd77b56" Selector="&lt;html app='chrome.exe' title='*купить по цене*' url='https://rivegauche.ru/product/*' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1235.2,3406.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="833.6,3404.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
-              <Variable x:TypeArguments="x:String" Name="str_id" />
-              <Variable x:TypeArguments="x:String" Name="str_discountPrice" />
-              <Variable x:TypeArguments="x:String" Name="str_fullPrice" />
-              <Variable x:TypeArguments="x:String" Name="str_isInStock" />
-              <Variable x:TypeArguments="x:String" Name="str_name" />
-              <Variable x:TypeArguments="x:String" Name="str_subtitle" />
-              <Variable x:TypeArguments="x:Boolean" Name="bool" />
               <Variable x:TypeArguments="x:Boolean" Name="bool_isCapacityExists" />
-              <Variable x:TypeArguments="x:Boolean" Name="bool_isWeightExists" />
               <Variable x:TypeArguments="x:Boolean" Name="bool_isColorExists" />
               <Variable x:TypeArguments="x:Boolean" Name="bool_isCapacityChooseExists" />
             </Sequence.Variables>
@@ -160,8 +153,8 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="1172.8,64.8" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
-            <ui:UiElementExists DisplayName="Is выберите объем exists" Exists="[bool_isCapacityChooseExists]" sap:VirtualizedContainerService.HintSize="1172.8,147.2" sap2010:WorkflowViewState.IdRef="UiElementExists_4">
+            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="771.2,64.8" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+            <ui:UiElementExists DisplayName="Is выберите объем exists" Exists="[bool_isCapacityChooseExists]" sap:VirtualizedContainerService.HintSize="771.2,147.2" sap2010:WorkflowViewState.IdRef="UiElementExists_4">
               <ui:UiElementExists.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5075a926-2606-40ca-9b22-2aae23b09777" InformativeScreenshot="09e9fa53232c164010da2ac3076e5dae" Selector="&lt;html app='chrome.exe' title='DS&amp;amp;Durga Grapefruit Generation Eau de Parfum – купить по цене 13920 рублей | Парфюмерная вода DS&amp;amp;Durga Grapefruit Generation Eau de Parfum объем 50 мл | Отзывы' /&gt;&lt;webctrl aaname=' Выберите объем*' tag='DIV' /&gt;">
                   <ui:Target.TimeoutMS>
@@ -173,14 +166,13 @@
                 </ui:Target>
               </ui:UiElementExists.Target>
             </ui:UiElementExists>
-            <ui:IfElseIf DisplayName="If Выберите объем exists" sap:VirtualizedContainerService.HintSize="1172.8,3108" sap2010:WorkflowViewState.IdRef="IfElseIf_5">
+            <ui:IfElseIf DisplayName="If Выберите объем exists" sap:VirtualizedContainerService.HintSize="771.2,3106.4" sap2010:WorkflowViewState.IdRef="IfElseIf_5">
               <ui:IfElseIf.ConditionBlocks>
                 <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
                   <ui:IfElseIfBlock BlockType="If" Condition="[bool_isCapacityChooseExists]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_5">
                     <ui:IfElseIfBlock.Then>
-                      <Sequence sap2010:Annotation.AnnotationText="Start processing multiple capacities" DisplayName="Process multiple capacities" sap:VirtualizedContainerService.HintSize="1122.4,2468.8" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                      <Sequence sap2010:Annotation.AnnotationText="Start processing multiple capacities" DisplayName="Process multiple capacities" sap:VirtualizedContainerService.HintSize="720.8,2468" sap2010:WorkflowViewState.IdRef="Sequence_11">
                         <Sequence.Variables>
-                          <Variable x:TypeArguments="x:String" Name="str_capacity" />
                           <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="list_capacities" />
                         </Sequence.Variables>
                         <sap:WorkflowViewStateService.ViewState>
@@ -190,7 +182,7 @@
                             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:FindChildren Children="[list_capacities]" DisplayName="Find all capacities" Filter="&lt;webctrl tag='a'/&gt;" sap:VirtualizedContainerService.HintSize="1060,147.2" sap2010:WorkflowViewState.IdRef="FindChildren_3" Scope="FIND_DESCENDANTS">
+                        <ui:FindChildren Children="[list_capacities]" DisplayName="Find all capacities" Filter="&lt;webctrl tag='a'/&gt;" sap:VirtualizedContainerService.HintSize="658.4,147.2" sap2010:WorkflowViewState.IdRef="FindChildren_3" Scope="FIND_DESCENDANTS">
                           <ui:FindChildren.Target>
                             <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="097a23f8-0326-48b5-bb6c-b8714735285c" InformativeScreenshot="ba14e6e3118cfd1643ba55003d4701eb" Selector="&lt;webctrl tag='PRODUCT-VARIANT-SELECTOR' visibleinnertext='Выберите объем*' /&gt;&lt;webctrl tag='DIV' class='variants*' /&gt;">
                               <ui:Target.TimeoutMS>
@@ -202,24 +194,19 @@
                             </ui:Target>
                           </ui:FindChildren.Target>
                         </ui:FindChildren>
-                        <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="Process each capacity" sap:VirtualizedContainerService.HintSize="1060,2104.8" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[list_capacities]">
+                        <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="Process each capacity" sap:VirtualizedContainerService.HintSize="658.4,2104" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[list_capacities]">
                           <ui:ForEach.Body>
                             <ActivityAction x:TypeArguments="ui:UiElement">
                               <ActivityAction.Argument>
                                 <DelegateInArgument x:TypeArguments="ui:UiElement" Name="currentUiElement" />
                               </ActivityAction.Argument>
-                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1026.4,1899.2" sap2010:WorkflowViewState.IdRef="Sequence_12">
-                                <Sequence.Variables>
-                                  <Variable x:TypeArguments="x:String" Name="str_url" />
-                                  <Variable x:TypeArguments="x:String" Default="https://rivegauche.ru" Name="str_mainUrl" />
-                                  <Variable x:TypeArguments="x:String" Name="str_address" />
-                                </Sequence.Variables>
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="624.8,1898.4" sap2010:WorkflowViewState.IdRef="Sequence_12">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="innerText" DisplayName="Write Capacity" sap:VirtualizedContainerService.HintSize="964,224" sap2010:WorkflowViewState.IdRef="GetAttribute_4">
+                                <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="innerText" DisplayName="Write Capacity" sap:VirtualizedContainerService.HintSize="562.4,224" sap2010:WorkflowViewState.IdRef="GetAttribute_4">
                                   <ui:GetAttribute.Result>
                                     <OutArgument x:TypeArguments="x:Object">[row_productData("Capacity")]</OutArgument>
                                   </ui:GetAttribute.Result>
@@ -234,7 +221,7 @@
                                     </ui:Target>
                                   </ui:GetAttribute.Target>
                                 </ui:GetAttribute>
-                                <ui:UiElementExists DisplayName="Is оттенок exists" Exists="[bool_isColorExists]" sap:VirtualizedContainerService.HintSize="964,147.2" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+                                <ui:UiElementExists DisplayName="Is оттенок exists" Exists="[bool_isColorExists]" sap:VirtualizedContainerService.HintSize="562.4,147.2" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
                                   <ui:UiElementExists.Target>
                                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5075a926-2606-40ca-9b22-2aae23b09777" InformativeScreenshot="0c7d11b85c6257faeb66ff402b19ebc3" Selector="&lt;webctrl class='ng-placeholder' tag='DIV' innertext='Выберите оттенок' /&gt;">
                                       <ui:Target.TimeoutMS>
@@ -246,16 +233,13 @@
                                     </ui:Target>
                                   </ui:UiElementExists.Target>
                                 </ui:UiElementExists>
-                                <ui:IfElseIf sap2010:Annotation.AnnotationText="" DisplayName="If оттенок exists" sap:VirtualizedContainerService.HintSize="964,1441.6" sap2010:WorkflowViewState.IdRef="IfElseIf_4">
+                                <ui:IfElseIf sap2010:Annotation.AnnotationText="" DisplayName="If оттенок exists" sap:VirtualizedContainerService.HintSize="562.4,1440.8" sap2010:WorkflowViewState.IdRef="IfElseIf_4">
                                   <ui:IfElseIf.ConditionBlocks>
                                     <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
                                       <ui:IfElseIfBlock BlockType="If" Condition="[bool_isColorExists]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_4">
                                         <ui:IfElseIfBlock.Then>
                                           <Sequence sap2010:Annotation.AnnotationText="Start processing multiple colors" DisplayName="Process multiple colors" sap:VirtualizedContainerService.HintSize="512,900.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
                                             <Sequence.Variables>
-                                              <Variable x:TypeArguments="x:String" Name="str_capacity" />
-                                              <Variable x:TypeArguments="x:String" Name="str_weight" />
-                                              <Variable x:TypeArguments="x:String" Name="str_color" />
                                               <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="list_colors" />
                                             </Sequence.Variables>
                                             <sap:WorkflowViewStateService.ViewState>
@@ -284,11 +268,6 @@
                                                     <DelegateInArgument x:TypeArguments="ui:UiElement" Name="currentUiElement" />
                                                   </ActivityAction.Argument>
                                                   <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,447.2" sap2010:WorkflowViewState.IdRef="Sequence_10">
-                                                    <Sequence.Variables>
-                                                      <Variable x:TypeArguments="x:String" Name="str_url" />
-                                                      <Variable x:TypeArguments="x:String" Default="https://rivegauche.ru" Name="str_mainUrl" />
-                                                      <Variable x:TypeArguments="x:String" Name="str_address" />
-                                                    </Sequence.Variables>
                                                     <sap:WorkflowViewStateService.ViewState>
                                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -310,14 +289,11 @@
                                                         </ui:Target>
                                                       </ui:GetAttribute.Target>
                                                     </ui:GetAttribute>
-                                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ProcessCommonData.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="353.6,136.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="ProcessCommonData.xaml">
+                                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ProcessCommonData.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="353.6,136.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Chrome\ProcessCommonData.xaml">
                                                       <ui:InvokeWorkflowFile.Arguments>
-                                                        <InOutArgument x:TypeArguments="sd:DataRow" x:Key="row_productData">
-                                                          <VisualBasicReference x:TypeArguments="sd:DataRow" ExpressionText="row_productData" />
-                                                        </InOutArgument>
-                                                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="dt_products">
-                                                          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_products" />
-                                                        </InOutArgument>
+                                                        <InOutArgument x:TypeArguments="sd:DataRow" x:Key="row_productData">[row_productData]</InOutArgument>
+                                                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="dt_products">[dt_products]</InOutArgument>
+                                                        <InArgument x:TypeArguments="sd:DataRow" x:Key="row_transactionItem">[row_transactionItem]</InArgument>
                                                       </ui:InvokeWorkflowFile.Arguments>
                                                     </ui:InvokeWorkflowFile>
                                                   </Sequence>
@@ -337,14 +313,11 @@
                                                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ProcessCommonData.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="353.6,136.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="ProcessCommonData.xaml">
+                                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ProcessCommonData.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="353.6,136.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Chrome\ProcessCommonData.xaml">
                                               <ui:InvokeWorkflowFile.Arguments>
-                                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="row_productData">
-                                                  <VisualBasicReference x:TypeArguments="sd:DataRow" ExpressionText="row_productData" />
-                                                </InOutArgument>
-                                                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="dt_products">
-                                                  <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_products" />
-                                                </InOutArgument>
+                                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="row_productData">[row_productData]</InOutArgument>
+                                                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="dt_products">[dt_products]</InOutArgument>
+                                                <InArgument x:TypeArguments="sd:DataRow" x:Key="row_transactionItem">[row_transactionItem]</InArgument>
                                               </ui:InvokeWorkflowFile.Arguments>
                                             </ui:InvokeWorkflowFile>
                                           </Sequence>
@@ -370,7 +343,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:ForEach>
-                        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="1060,99.2" sap2010:WorkflowViewState.IdRef="MessageBox_7" Text="[&quot;&quot;]" />
+                        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="658.4,99.2" sap2010:WorkflowViewState.IdRef="MessageBox_7" Text="[&quot;&quot;]" />
                       </Sequence>
                     </ui:IfElseIfBlock.Then>
                   </ui:IfElseIfBlock>
@@ -450,14 +423,11 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:IfElseIf>
-                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ProcessCommonData.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="353.6,136.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="ProcessCommonData.xaml">
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ProcessCommonData.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="353.6,136.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Chrome\ProcessCommonData.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
-                            <InOutArgument x:TypeArguments="sd:DataRow" x:Key="row_productData">
-                              <VisualBasicReference x:TypeArguments="sd:DataRow" ExpressionText="row_productData" />
-                            </InOutArgument>
-                            <InOutArgument x:TypeArguments="sd:DataTable" x:Key="dt_products">
-                              <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_products" />
-                            </InOutArgument>
+                            <InOutArgument x:TypeArguments="sd:DataRow" x:Key="row_productData">[row_productData]</InOutArgument>
+                            <InOutArgument x:TypeArguments="sd:DataTable" x:Key="dt_products">[dt_products]</InOutArgument>
+                            <InArgument x:TypeArguments="sd:DataRow" x:Key="row_transactionItem">[row_transactionItem]</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                       </Sequence>
