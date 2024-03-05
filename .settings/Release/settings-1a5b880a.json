@@ -1,7 +1,7 @@
 {
   "UiPath.UiAutomation.Activities.Generic.DelayBeforeMS": "200",
   "UiPath.UiAutomation.Activities.Generic.DelayAfterMS": "300",
-  "UiPath.UiAutomation.Activities.Generic.TimeoutMS": "30000",
+  "UiPath.UiAutomation.Activities.Generic.TimeoutMS": "2000",
   "UiPath.UiAutomation.Activities.Generic.WaitForReady": "INTERACTIVE",
   "UiPath.UiAutomation.Activities.Generic.AlterIfDisabled": "False",
   "UiPath.UiAutomation.Activities.Generic.CaptureScreenshots": "True",
@@ -26,7 +26,7 @@
   "UiPath.UiAutomation.Activities.RobotLogging.LogTargetInfo": "False",
   "UiPath.UiAutomation.Activities.Callout.Timer": "0",
   "UiPath.UiAutomation.Activities.DataScrape.DelayBetweenPagesMS": "300",
-  "UiPath.UiAutomation.Activities.ElementExists.TimeoutMS": "30000",
+  "UiPath.UiAutomation.Activities.ElementExists.TimeoutMS": "2000",
   "UiPath.UiAutomation.Activities.Highlight.HighlightTime": "1000",
   "UiPath.UiAutomation.Activities.KeyboardEvents.SendWindowMessages": "False",
   "UiPath.UiAutomation.Activities.KeyboardEvents.ClickBeforeTyping": "False",
