@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>836.8,4219.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>836.8,3978.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessCommonData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -49,6 +49,7 @@
       <x:String>UiPath.Platform.ObjectLibrary</x:String>
       <x:String>System.Linq.Expressions</x:String>
       <x:String>System.Numerics</x:String>
+      <x:String>System.Web</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -112,9 +113,10 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Web.HttpUtility</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ProcessCommonData" sap:VirtualizedContainerService.HintSize="800,4154.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ProcessCommonData" sap:VirtualizedContainerService.HintSize="784,3913.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, scg:List(x:String))" Name="dict_addresses" />
     </Sequence.Variables>
@@ -123,13 +125,13 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Product Page" sap:VirtualizedContainerService.HintSize="737.6,4065.6" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="285e72fa73178056258f568f94b34e35" Selector="&lt;html app='chrome.exe' title='*купить по цене*' url='https://rivegauche.ru/product/*' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Product Page" sap:VirtualizedContainerService.HintSize="721.6,3824.8" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="285e72fa73178056258f568f94b34e35" Selector="&lt;html app='chrome.exe' title='*купить по цене*' url='https://rivegauche.ru/product/*' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="704,3895.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="688,3654.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="enum_addresses" />
               <Variable x:TypeArguments="x:String" Name="str_name" />
@@ -140,15 +142,16 @@
               <Variable x:TypeArguments="x:String" Name="str_isInStock" />
               <Variable x:TypeArguments="x:Boolean" Name="bool_isWeightExists" />
               <Variable x:TypeArguments="x:String" Name="str_productPrices" />
+              <Variable x:TypeArguments="x:String" Name="str_url" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:GetVisibleText FormattedText="{x:Null}" WordsInfo="{x:Null}" DisplayName="Get Product name" sap:VirtualizedContainerService.HintSize="641.6,147.2" sap2010:WorkflowViewState.IdRef="GetVisibleText_1">
-              <ui:GetVisibleText.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a0a2c42d-22dd-4c96-810c-f5aef4e5e9f8" InformativeScreenshot="1d2bc3ef19b4dc16cb152a6a53391839" Selector="&lt;webctrl tag='H1' /&gt;&lt;webctrl tag='DIV' /&gt;">
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Product name" sap:VirtualizedContainerService.HintSize="625.6,147.2" sap2010:WorkflowViewState.IdRef="GetValue_6">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="37312a2c-5ed8-4c7f-81d3-c5711af8fa78" InformativeScreenshot="4c9bc78d60fc848b27a7395ff0a20308" Selector="&lt;webctrl tag='H1' /&gt;&lt;webctrl tag='DIV' /&gt;">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
@@ -156,12 +159,12 @@
                     <InArgument x:TypeArguments="ui:WaitForReady" />
                   </ui:Target.WaitForReady>
                 </ui:Target>
-              </ui:GetVisibleText.Target>
-              <ui:GetVisibleText.Text>
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
                 <OutArgument x:TypeArguments="x:String">[str_name]</OutArgument>
-              </ui:GetVisibleText.Text>
-            </ui:GetVisibleText>
-            <ui:GetVisibleText FormattedText="{x:Null}" WordsInfo="{x:Null}" DisplayName="Get Subtitle" sap:VirtualizedContainerService.HintSize="641.6,147.2" sap2010:WorkflowViewState.IdRef="GetVisibleText_2">
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:GetVisibleText FormattedText="{x:Null}" WordsInfo="{x:Null}" DisplayName="Get Subtitle" sap:VirtualizedContainerService.HintSize="625.6,147.2" sap2010:WorkflowViewState.IdRef="GetVisibleText_2">
               <ui:GetVisibleText.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a0a2c42d-22dd-4c96-810c-f5aef4e5e9f8" InformativeScreenshot="81e497500ff75b554200c6062b0bb4e3" Selector="&lt;webctrl tag='H1' /&gt;&lt;webctrl tag='SPAN' /&gt;">
                   <ui:Target.TimeoutMS>
@@ -176,7 +179,7 @@
                 <OutArgument x:TypeArguments="x:String">[str_subtitle]</OutArgument>
               </ui:GetVisibleText.Text>
             </ui:GetVisibleText>
-            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Id" sap:VirtualizedContainerService.HintSize="641.6,147.2" sap2010:WorkflowViewState.IdRef="GetValue_1">
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Id" sap:VirtualizedContainerService.HintSize="625.6,147.2" sap2010:WorkflowViewState.IdRef="GetValue_1">
               <ui:GetValue.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d19449f5-3d51-4e78-81dc-d4c9ac76f90d" InformativeScreenshot="adb1ebec2df38df92af5f63686d38ad0" Selector="&lt;webctrl aaname='ID:*' tag='DIV' /&gt;">
                   <ui:Target.TimeoutMS>
@@ -191,7 +194,7 @@
                 <OutArgument x:TypeArguments="x:String">[str_id]</OutArgument>
               </ui:GetValue.Value>
             </ui:GetValue>
-            <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="visibleInnerText" DisplayName="Get Prices" sap:VirtualizedContainerService.HintSize="641.6,244.8" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
+            <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="visibleInnerText" DisplayName="Get Prices" sap:VirtualizedContainerService.HintSize="625.6,244.8" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
               <ui:GetAttribute.Result>
                 <OutArgument x:TypeArguments="x:String">[str_productPrices]</OutArgument>
               </ui:GetAttribute.Result>
@@ -206,9 +209,12 @@
                 </ui:Target>
               </ui:GetAttribute.Target>
             </ui:GetAttribute>
-            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Check if in Stock" sap:VirtualizedContainerService.HintSize="641.6,147.2" sap2010:WorkflowViewState.IdRef="GetValue_4">
-              <ui:GetValue.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3bc64dd5-7a5e-4714-a9ae-b2c20edff501" InformativeScreenshot="3e696612bdb84592467777382c706bcd" Selector="&lt;webctrl class='pos-cities' tag='DIV' innertext='В твоем городе*' /&gt;">
+            <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="href" DisplayName="Get url" sap:VirtualizedContainerService.HintSize="625.6,244.8" sap2010:WorkflowViewState.IdRef="GetAttribute_2">
+              <ui:GetAttribute.Result>
+                <OutArgument x:TypeArguments="x:String">[str_url]</OutArgument>
+              </ui:GetAttribute.Result>
+              <ui:GetAttribute.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="86282005-c5a9-4665-bfd5-466d3764c6e2" InformativeScreenshot="66444cac658ec6ab537d753d90cb311e" Selector="&lt;webctrl tag='LINK' rel='canonical' /&gt;">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
@@ -216,12 +222,9 @@
                     <InArgument x:TypeArguments="ui:WaitForReady" />
                   </ui:Target.WaitForReady>
                 </ui:Target>
-              </ui:GetValue.Target>
-              <ui:GetValue.Value>
-                <OutArgument x:TypeArguments="x:String">[str_isInStock]</OutArgument>
-              </ui:GetValue.Value>
-            </ui:GetValue>
-            <ui:MultipleAssign DisplayName="Write data to datarow" sap:VirtualizedContainerService.HintSize="641.6,282.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+              </ui:GetAttribute.Target>
+            </ui:GetAttribute>
+            <ui:MultipleAssign DisplayName="Write data to datarow" sap:VirtualizedContainerService.HintSize="625.6,344.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -229,7 +232,7 @@
                       <OutArgument x:TypeArguments="x:Object">[row_productData("Name")]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:Object">[str_name.Trim()]</InArgument>
+                      <InArgument x:TypeArguments="x:String">[str_name.Trim()]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
@@ -264,10 +267,26 @@
                       <InArgument x:TypeArguments="x:Object">[Int32.Parse(Regex.Replace(Regex.Matches(str_productPrices,"(\d+\D{0,1}\d*).₽")(0).Groups(1).ToString, "\D", ""))]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:Object">[row_productData("Url")]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:Object">[str_url]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:Object">[row_productData("BrandName")]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:Object">[row_transactionItem("brandName").ToString().Trim()]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
                 </scg:List>
               </ui:MultipleAssign.AssignOperations>
             </ui:MultipleAssign>
-            <ui:UiElementExists DisplayName="Is Вес exists" Exists="[bool_isWeightExists]" sap:VirtualizedContainerService.HintSize="641.6,147.2" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+            <ui:UiElementExists DisplayName="Is Вес exists" Exists="[bool_isWeightExists]" sap:VirtualizedContainerService.HintSize="625.6,147.2" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
               <ui:UiElementExists.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5075a926-2606-40ca-9b22-2aae23b09777" InformativeScreenshot="9c934e3be04f28da9d24b86c06105178" Selector="&lt;webctrl tag='DIV' class='*features*' /&gt;&lt;webctrl tag='DIV' innertext='Вес*' /&gt;">
                   <ui:Target.TimeoutMS>
@@ -279,7 +298,7 @@
                 </ui:Target>
               </ui:UiElementExists.Target>
             </ui:UiElementExists>
-            <ui:IfElseIf sap2010:Annotation.AnnotationText="Extract вес and add to datarow" DisplayName="If вес exists" sap:VirtualizedContainerService.HintSize="641.6,605.6" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
+            <ui:IfElseIf sap2010:Annotation.AnnotationText="Extract вес and add to datarow" DisplayName="If вес exists" sap:VirtualizedContainerService.HintSize="625.6,605.6" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
               <ui:IfElseIf.ConditionBlocks>
                 <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
                   <ui:IfElseIfBlock BlockType="If" Condition="[bool_isWeightExists]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_1">
@@ -330,25 +349,25 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:IfElseIf>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ExtractAddresses.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="641.6,153.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Chrome\ExtractAddresses.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ExtractAddresses.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="625.6,153.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Chrome\ExtractAddresses.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="sd:DataRow" x:Key="row_transactionItem">[row_transactionItem]</InArgument>
                 <OutArgument x:TypeArguments="scg:Dictionary(x:String, scg:List(x:String))" x:Key="dict_addresses">[dict_addresses]</OutArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
-            <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For each city" sap:VirtualizedContainerService.HintSize="641.6,1786.4" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[dict_addresses.Keys]">
+            <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For each city" sap:VirtualizedContainerService.HintSize="625.6,1385.6" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[dict_addresses.Keys]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="x:Object">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:Object" Name="str_city" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Process single city" sap:VirtualizedContainerService.HintSize="608,1597.6" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <Sequence DisplayName="Process single city" sap:VirtualizedContainerService.HintSize="592,1196.8" sap2010:WorkflowViewState.IdRef="Sequence_11">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Assign DisplayName="Write region" sap:VirtualizedContainerService.HintSize="545.6,121.6" sap2010:WorkflowViewState.IdRef="Assign_6">
+                    <Assign DisplayName="Write region" sap:VirtualizedContainerService.HintSize="529.6,121.6" sap2010:WorkflowViewState.IdRef="Assign_6">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:Object">[row_productData("Region")]</OutArgument>
                       </Assign.To>
@@ -356,7 +375,7 @@
                         <InArgument x:TypeArguments="x:Object">[str_city]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <Assign sap:VirtualizedContainerService.HintSize="545.6,121.6" sap2010:WorkflowViewState.IdRef="Assign_10">
+                    <Assign DisplayName="Write Is in stock" sap:VirtualizedContainerService.HintSize="529.6,121.6" sap2010:WorkflowViewState.IdRef="Assign_10">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:Object">[row_productData("IsInStock")]</OutArgument>
                       </Assign.To>
@@ -364,24 +383,26 @@
                         <InArgument x:TypeArguments="x:Object">["1"]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Write each address as a single product" DisplayName="For Each Address" sap:VirtualizedContainerService.HintSize="545.6,1268" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[dict_addresses(str_city.ToString)]">
+                    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Write each address as a single product" DisplayName="For Each Address" sap:VirtualizedContainerService.HintSize="529.6,867.2" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[dict_addresses(str_city.ToString)]">
                       <ui:ForEach.Body>
                         <ActivityAction x:TypeArguments="x:String">
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="x:String" Name="str_address" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Process each address" sap:VirtualizedContainerService.HintSize="512,1048" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                          <Sequence DisplayName="Process each address" sap:VirtualizedContainerService.HintSize="496,647.2" sap2010:WorkflowViewState.IdRef="Sequence_8">
                             <Sequence.Variables>
                               <Variable x:TypeArguments="sd:DataRow" Name="row_productDataTemp" />
                               <Variable x:TypeArguments="sd:DataRow" Name="row_temp" />
                               <Variable x:TypeArguments="x:Int32" Name="int_id" />
+                              <Variable x:TypeArguments="x:Int32" Name="int_iter" />
+                              <Variable x:TypeArguments="x:String" Name="list_columnNames" />
                             </Sequence.Variables>
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Assign DisplayName="Write address" sap:VirtualizedContainerService.HintSize="449.6,121.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+                            <Assign DisplayName="Write address" sap:VirtualizedContainerService.HintSize="433.6,121.6" sap2010:WorkflowViewState.IdRef="Assign_4">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="x:Object">[row_productData("Address")]</OutArgument>
                               </Assign.To>
@@ -389,7 +410,7 @@
                                 <InArgument x:TypeArguments="x:Object">[str_address]</InArgument>
                               </Assign.Value>
                             </Assign>
-                            <If Condition="[str_address.Equals(&quot;&quot;)]" DisplayName="If out of stock" sap:VirtualizedContainerService.HintSize="449.6,64.8" sap2010:WorkflowViewState.IdRef="If_1">
+                            <If Condition="[str_address.Equals(&quot;&quot;)]" DisplayName="If out of stock - write 0 to is in stock" sap:VirtualizedContainerService.HintSize="433.6,64.8" sap2010:WorkflowViewState.IdRef="If_1">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -423,7 +444,7 @@
                                 </Sequence>
                               </If.Else>
                             </If>
-                            <Assign DisplayName="Assign row_temp" sap:VirtualizedContainerService.HintSize="449.6,121.6" sap2010:WorkflowViewState.IdRef="Assign_9">
+                            <Assign DisplayName="Assign row_temp" sap:VirtualizedContainerService.HintSize="433.6,121.6" sap2010:WorkflowViewState.IdRef="Assign_9">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="sd:DataRow">[row_temp]</OutArgument>
                               </Assign.To>
@@ -431,7 +452,7 @@
                                 <InArgument x:TypeArguments="sd:DataRow">[dt_products.NewRow()]</InArgument>
                               </Assign.Value>
                             </Assign>
-                            <If Condition="[not dt_products.Rows.Count.Equals(0)]" sap:VirtualizedContainerService.HintSize="449.6,64.8" sap2010:WorkflowViewState.IdRef="If_2">
+                            <If Condition="[not dt_products.Rows.Count.Equals(0)]" DisplayName="Assign id number" sap:VirtualizedContainerService.HintSize="433.6,64.8" sap2010:WorkflowViewState.IdRef="If_2">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -473,40 +494,13 @@
                                 </Sequence>
                               </If.Else>
                             </If>
-                            <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="449.6,400.8" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[row_productData.ItemArray]">
-                              <ui:ForEach.Body>
-                                <ActivityAction x:TypeArguments="x:Object">
-                                  <ActivityAction.Argument>
-                                    <DelegateInArgument x:TypeArguments="x:Object" Name="currentItem" />
-                                  </ActivityAction.Argument>
-                                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,195.2" sap2010:WorkflowViewState.IdRef="Sequence_16">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="353.6,108.8" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[currentItem]" />
-                                  </Sequence>
-                                </ActivityAction>
-                              </ui:ForEach.Body>
-                            </ui:ForEach>
-                            <ui:InvokeCode ContinueOnError="{x:Null}" Code="row_temp.ItemArray = row_productData.ItemArray&#xD;&#xA;row_temp(&quot;id&quot;) = int_id&#xD;&#xA;dt_products.Rows.Add(row_temp)" DisplayName="Add product to dt_products" sap:VirtualizedContainerService.HintSize="449.6,188" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+                            <ui:InvokeCode ContinueOnError="{x:Null}" Code="row_temp.ItemArray = row_productData.ItemArray&#xD;&#xA;row_temp(&quot;id&quot;) = int_id&#xD;&#xA;dt_products.Rows.Add(row_temp)" DisplayName="Add product to dt_products" sap:VirtualizedContainerService.HintSize="433.6,188" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
                               <ui:InvokeCode.Arguments>
-                                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="dt_products">
-                                  <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_products" />
-                                </InOutArgument>
-                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="row_temp">
-                                  <VisualBasicReference x:TypeArguments="sd:DataRow" ExpressionText="row_temp" />
-                                </InOutArgument>
-                                <InArgument x:TypeArguments="x:String" x:Key="str_address">
-                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_address" />
-                                </InArgument>
-                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="row_productData">
-                                  <VisualBasicReference x:TypeArguments="sd:DataRow" ExpressionText="row_productData" />
-                                </InOutArgument>
-                                <InArgument x:TypeArguments="x:Int32" x:Key="int_id">
-                                  <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="int_id" />
-                                </InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="dt_products">[dt_products]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="row_temp">[row_temp]</InOutArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="str_address">[str_address]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="row_productData">[row_productData]</InOutArgument>
+                                <InArgument x:TypeArguments="x:Int32" x:Key="int_id">[int_id]</InArgument>
                               </ui:InvokeCode.Arguments>
                             </ui:InvokeCode>
                           </Sequence>
