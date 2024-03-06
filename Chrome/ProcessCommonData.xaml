@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>836.8,3978.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>836,4156.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessCommonData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -116,22 +116,23 @@
       <AssemblyReference>System.Web.HttpUtility</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ProcessCommonData" sap:VirtualizedContainerService.HintSize="784,3913.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ProcessCommonData" sap:VirtualizedContainerService.HintSize="784,4092" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, scg:List(x:String))" Name="dict_addresses" />
+      <Variable x:TypeArguments="ui:Browser" Name="browser_chrome" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Product Page" sap:VirtualizedContainerService.HintSize="721.6,3824.8" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="285e72fa73178056258f568f94b34e35" Selector="&lt;html app='chrome.exe' title='*купить по цене*' url='https://rivegauche.ru/product/*' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" BrowserType="Chrome" DisplayName="Attach Product Page" sap:VirtualizedContainerService.HintSize="721.6,4003.2" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="285e72fa73178056258f568f94b34e35" Selector="&lt;html app='chrome.exe' title='*купить по цене*' url='https://rivegauche.ru/product/*' /&gt;" UiBrowser="[browser_chrome]">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="688,3654.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="688,3832.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="enum_addresses" />
               <Variable x:TypeArguments="x:String" Name="str_name" />
@@ -143,6 +144,7 @@
               <Variable x:TypeArguments="x:Boolean" Name="bool_isWeightExists" />
               <Variable x:TypeArguments="x:String" Name="str_productPrices" />
               <Variable x:TypeArguments="x:String" Name="str_url" />
+              <Variable x:TypeArguments="x:Boolean" Name="bool_fullPriceExists" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -194,12 +196,9 @@
                 <OutArgument x:TypeArguments="x:String">[str_id]</OutArgument>
               </ui:GetValue.Value>
             </ui:GetValue>
-            <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="visibleInnerText" DisplayName="Get Prices" sap:VirtualizedContainerService.HintSize="625.6,244.8" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
-              <ui:GetAttribute.Result>
-                <OutArgument x:TypeArguments="x:String">[str_productPrices]</OutArgument>
-              </ui:GetAttribute.Result>
-              <ui:GetAttribute.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3feb6d23-6219-423e-a40b-16b033914260" InformativeScreenshot="597b06682eeb865c3847cf5df2d4ee82" Selector="&lt;webctrl tag='PRODUCT-PRICE' innertext='*₽*' /&gt;">
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Discount Price" sap:VirtualizedContainerService.HintSize="625.6,147.2" sap2010:WorkflowViewState.IdRef="GetValue_7">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d19449f5-3d51-4e78-81dc-d4c9ac76f90d" InformativeScreenshot="c7c469e492a575bf703e0a08ca5e71c7" Selector="&lt;webctrl tag='PRODUCT-PRICE' /&gt;&lt;webctrl tag='*' class='price first' /&gt;">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
@@ -207,9 +206,120 @@
                     <InArgument x:TypeArguments="ui:WaitForReady" />
                   </ui:Target.WaitForReady>
                 </ui:Target>
-              </ui:GetAttribute.Target>
-            </ui:GetAttribute>
-            <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="href" DisplayName="Get url" sap:VirtualizedContainerService.HintSize="625.6,244.8" sap2010:WorkflowViewState.IdRef="GetAttribute_2">
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[str_DiscountPrice]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:UiElementExists DisplayName="Check Full Price exists" Exists="[bool_fullPriceExists]" sap:VirtualizedContainerService.HintSize="625.6,147.2" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+              <ui:UiElementExists.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b75a6f81-4f3f-4a35-a19c-e0909995b046" InformativeScreenshot="589379d22c3421e69fd84dde57727319" Selector="&lt;webctrl class='price' tag='DIV' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:UiElementExists.Target>
+            </ui:UiElementExists>
+            <ui:IfElseIf DisplayName="Extract proper full price" sap:VirtualizedContainerService.HintSize="625.6,64.8" sap2010:WorkflowViewState.IdRef="IfElseIf_2">
+              <ui:IfElseIf.ConditionBlocks>
+                <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                  <ui:IfElseIfBlock BlockType="If" Condition="[bool_fullPriceExists]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_2">
+                    <ui:IfElseIfBlock.Then>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,216.8" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Full Price" sap:VirtualizedContainerService.HintSize="353.6,130.4" sap2010:WorkflowViewState.IdRef="GetValue_9">
+                          <ui:GetValue.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d19449f5-3d51-4e78-81dc-d4c9ac76f90d" InformativeScreenshot="cb80994a08a0ad2d5be77913ca969db5" Selector="&lt;webctrl tag='PRODUCT-PRICE' /&gt;&lt;webctrl class='price' tag='DIV' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:GetValue.Target>
+                          <ui:GetValue.Value>
+                            <OutArgument x:TypeArguments="x:String">[str_FullPrice]</OutArgument>
+                          </ui:GetValue.Value>
+                        </ui:GetValue>
+                      </Sequence>
+                    </ui:IfElseIfBlock.Then>
+                  </ui:IfElseIfBlock>
+                  <ui:IfElseIfBlock BlockType="Else" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_3">
+                    <ui:IfElseIfBlock.Then>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,216.8" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Full Price" sap:VirtualizedContainerService.HintSize="353.6,130.4" sap2010:WorkflowViewState.IdRef="GetValue_10">
+                          <ui:GetValue.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d19449f5-3d51-4e78-81dc-d4c9ac76f90d" InformativeScreenshot="6354cd26104b59d62317eda2882cc50d" Selector="&lt;webctrl tag='PRODUCT-PRICE' /&gt;&lt;webctrl tag='S' class='price*' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:GetValue.Target>
+                          <ui:GetValue.Value>
+                            <OutArgument x:TypeArguments="x:String">[str_FullPrice]</OutArgument>
+                          </ui:GetValue.Value>
+                        </ui:GetValue>
+                      </Sequence>
+                    </ui:IfElseIfBlock.Then>
+                  </ui:IfElseIfBlock>
+                </sc:BindingList>
+              </ui:IfElseIf.ConditionBlocks>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:IfElseIf>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="625.6,64.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,314.4" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="visibleInnerText" DisplayName="Get Prices" sap:VirtualizedContainerService.HintSize="353.6,228" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
+                    <ui:GetAttribute.Result>
+                      <OutArgument x:TypeArguments="x:String">[str_productPrices]</OutArgument>
+                    </ui:GetAttribute.Result>
+                    <ui:GetAttribute.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3feb6d23-6219-423e-a40b-16b033914260" InformativeScreenshot="597b06682eeb865c3847cf5df2d4ee82" Selector="&lt;webctrl tag='PRODUCT-PRICE' innertext='*₽*' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:GetAttribute.Target>
+                  </ui:GetAttribute>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="url" DisplayName="Get url" sap:VirtualizedContainerService.HintSize="625.6,244.8" sap2010:WorkflowViewState.IdRef="GetAttribute_2">
               <ui:GetAttribute.Result>
                 <OutArgument x:TypeArguments="x:String">[str_url]</OutArgument>
               </ui:GetAttribute.Result>
@@ -256,7 +366,7 @@
                       <OutArgument x:TypeArguments="x:Object">[row_productData("DiscountPrice")]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:Object">[Int32.Parse(Regex.Replace(Regex.Matches(str_productPrices,"(\d+\D{0,1}\d*).₽")(1).Groups(1).ToString, "\D", ""))]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32">[Int32.Parse(Regex.Replace(str_DiscountPrice.Trim(), "[^\d]", ""))]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
@@ -264,7 +374,7 @@
                       <OutArgument x:TypeArguments="x:Object">[row_productData("FullPrice")]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:Object">[Int32.Parse(Regex.Replace(Regex.Matches(str_productPrices,"(\d+\D{0,1}\d*).₽")(0).Groups(1).ToString, "\D", ""))]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32">[Int32.Parse(Regex.Replace(str_FullPrice.Trim(), "[^\d]", ""))]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
@@ -298,7 +408,7 @@
                 </ui:Target>
               </ui:UiElementExists.Target>
             </ui:UiElementExists>
-            <ui:IfElseIf sap2010:Annotation.AnnotationText="Extract вес and add to datarow" DisplayName="If вес exists" sap:VirtualizedContainerService.HintSize="625.6,605.6" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
+            <ui:IfElseIf sap2010:Annotation.AnnotationText="Extract вес and add to datarow" DisplayName="If вес exists" sap:VirtualizedContainerService.HintSize="625.6,604.8" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
               <ui:IfElseIf.ConditionBlocks>
                 <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
                   <ui:IfElseIfBlock BlockType="If" Condition="[bool_isWeightExists]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_1">
@@ -494,7 +604,7 @@
                                 </Sequence>
                               </If.Else>
                             </If>
-                            <ui:InvokeCode ContinueOnError="{x:Null}" Code="row_temp.ItemArray = row_productData.ItemArray&#xD;&#xA;row_temp(&quot;id&quot;) = int_id&#xD;&#xA;dt_products.Rows.Add(row_temp)" DisplayName="Add product to dt_products" sap:VirtualizedContainerService.HintSize="433.6,188" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+                            <ui:InvokeCode ContinueOnError="{x:Null}" Code="row_temp.ItemArray = row_productData.ItemArray&#xA;row_temp(&quot;id&quot;) = int_id&#xA;dt_products.Rows.Add(row_temp)" DisplayName="Add product to dt_products" sap:VirtualizedContainerService.HintSize="433.6,188" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
                               <ui:InvokeCode.Arguments>
                                 <InOutArgument x:TypeArguments="sd:DataTable" x:Key="dt_products">[dt_products]</InOutArgument>
                                 <InOutArgument x:TypeArguments="sd:DataRow" x:Key="row_temp">[row_temp]</InOutArgument>
