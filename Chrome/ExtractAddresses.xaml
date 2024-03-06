@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>710.4,4183.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>710.4,4182.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ExtractAddresses_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -103,7 +103,7 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ExtractAddresses" sap:VirtualizedContainerService.HintSize="720.8,4118.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ExtractAddresses" sap:VirtualizedContainerService.HintSize="720.8,4117.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(x:String)" Name="list_citiesToExtract" />
     </Sequence.Variables>
@@ -120,7 +120,7 @@
         <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:List(x:String))">[new Dictionary(Of String, List(Of String))]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Assign cities to extract" sap:VirtualizedContainerService.HintSize="658.4,121.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign cities to extract" sap:VirtualizedContainerService.HintSize="658.4,120.8" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:List(x:String)">[list_citiesToExtract]</OutArgument>
       </Assign.To>
@@ -426,7 +426,7 @@
                         </ui:CursorPosition>
                       </ui:Click.CursorPosition>
                       <ui:Click.Target>
-                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fe93fc6e-fde7-48eb-8789-41608e7d0747" InformativeScreenshot="1887ee3bef8654df65ce85bb37ecaff1" Selector="&lt;webctrl tag='DIV' class='switch active' /&gt;" TimeoutMS="15000" WaitForReady="INTERACTIVE" />
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fe93fc6e-fde7-48eb-8789-41608e7d0747" InformativeScreenshot="1887ee3bef8654df65ce85bb37ecaff1" Selector="&lt;webctrl tag='DIV' class='switch active' /&gt;" TimeoutMS="20000" WaitForReady="INTERACTIVE" />
                       </ui:Click.Target>
                     </ui:Click>
                     <ui:FindChildren Children="[enum_addresses]" DisplayName="Find all addresses" Filter="&lt;webctrl tag='div' class='*address*'/&gt;" sap:VirtualizedContainerService.HintSize="466.4,147.2" sap2010:WorkflowViewState.IdRef="FindChildren_1" Scope="FIND_DESCENDANTS">

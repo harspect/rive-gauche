@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>836.8,3978.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>836,3978.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessCommonData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -119,13 +119,14 @@
   <Sequence DisplayName="ProcessCommonData" sap:VirtualizedContainerService.HintSize="784,3913.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, scg:List(x:String))" Name="dict_addresses" />
+      <Variable x:TypeArguments="ui:Browser" Name="browser_chrome" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Product Page" sap:VirtualizedContainerService.HintSize="721.6,3824.8" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="285e72fa73178056258f568f94b34e35" Selector="&lt;html app='chrome.exe' title='*купить по цене*' url='https://rivegauche.ru/product/*' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" BrowserType="Chrome" DisplayName="Attach Product Page" sap:VirtualizedContainerService.HintSize="721.6,3824.8" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="285e72fa73178056258f568f94b34e35" Selector="&lt;html app='chrome.exe' title='*купить по цене*' url='https://rivegauche.ru/product/*' /&gt;" UiBrowser="[browser_chrome]">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -209,7 +210,7 @@
                 </ui:Target>
               </ui:GetAttribute.Target>
             </ui:GetAttribute>
-            <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="href" DisplayName="Get url" sap:VirtualizedContainerService.HintSize="625.6,244.8" sap2010:WorkflowViewState.IdRef="GetAttribute_2">
+            <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="url" DisplayName="Get url" sap:VirtualizedContainerService.HintSize="625.6,244.8" sap2010:WorkflowViewState.IdRef="GetAttribute_2">
               <ui:GetAttribute.Result>
                 <OutArgument x:TypeArguments="x:String">[str_url]</OutArgument>
               </ui:GetAttribute.Result>
@@ -494,7 +495,7 @@
                                 </Sequence>
                               </If.Else>
                             </If>
-                            <ui:InvokeCode ContinueOnError="{x:Null}" Code="row_temp.ItemArray = row_productData.ItemArray&#xD;&#xA;row_temp(&quot;id&quot;) = int_id&#xD;&#xA;dt_products.Rows.Add(row_temp)" DisplayName="Add product to dt_products" sap:VirtualizedContainerService.HintSize="433.6,188" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+                            <ui:InvokeCode ContinueOnError="{x:Null}" Code="row_temp.ItemArray = row_productData.ItemArray&#xA;row_temp(&quot;id&quot;) = int_id&#xA;dt_products.Rows.Add(row_temp)" DisplayName="Add product to dt_products" sap:VirtualizedContainerService.HintSize="433.6,188" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
                               <ui:InvokeCode.Arguments>
                                 <InOutArgument x:TypeArguments="sd:DataTable" x:Key="dt_products">[dt_products]</InOutArgument>
                                 <InOutArgument x:TypeArguments="sd:DataRow" x:Key="row_temp">[row_temp]</InOutArgument>
